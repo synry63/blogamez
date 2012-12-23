@@ -1,0 +1,54 @@
+
+synry63BlogBundle_homepage:
+    pattern:  /{_locale}/acceuil
+    defaults: { _controller: synry63BlogBundle:Default:index,_locale: en}
+    requirements:
+        _locale: en|fr|es
+        
+synry63BlogBundle_news:
+    pattern:  /{_locale}/news
+    defaults: { _controller: synry63BlogBundle:Default:news,_locale: en }
+
+synry63BlogBundle_rafraichirhistorique:
+    pattern:  /rafraichirhistorique
+    defaults: { _controller: synry63BlogBundle:Default:rafraichirHistorique }    
+
+synry63BlogBundle_community:
+    pattern:  /{_locale}/community
+    defaults: { _controller: synry63BlogBundle:Default:community,_locale: en }
+    
+synry63BlogBundle_ranking:
+    pattern:  /rank
+    defaults: { _controller: synry63BlogBundle:Default:rank }        
+    
+synry63BlogBundle_themechose:
+    pattern:  /themechose
+    defaults: { _controller: synry63BlogBundle:Default:themeTraitement }
+    
+synry63BlogBundle_historique:
+    pattern:  /historique/{id}
+    defaults: { _controller: synry63BlogBundle:Article:historiqueArticle }
+    
+synry63BlogBundle_acticle:
+    pattern:  /acticle
+    defaults: { _controller: synry63BlogBundle:Article:article }
+    
+synry63BlogBundle_creeacticle:
+    pattern:  /{_locale}/creeacticle
+    defaults: { _controller: synry63BlogBundle:Article:ajouter,_locale: en }  
+    
+synry63BlogBundle_previewacticle:
+    pattern:  /{_locale}/previewacticle
+    defaults: { _controller: synry63BlogBundle:Article:preview,_locale: en }
+    
+synry63BlogBundle_choisir_langue:
+    pattern:  /choisir-langue/{langue}
+    defaults: { _controller: synry63BlogBundle:Default:choisirLangue }
+    
+synry63BlogBundle_mass_article:
+    pattern: /admin/massarticle/{nb}/{l}
+    defaults: { _controller: synry63BlogBundle:Default:massArticle }
+    
+synry63BlogBundle_random_images:
+    pattern: /admin/randomimages
+    defaults: { _controller: synry63BlogBundle:Default:randomImages }        

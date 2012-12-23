@@ -1,0 +1,116 @@
+{% extends "synry63BlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Preview Article {% endblock %}
+
+{% block javascripts %}
+{{ parent() }}        
+<script>
+jQuery(document).ready(function(){
+    
+ $('a[title]').qtip({
+	position: {
+		adjust: {
+			x: -55, y: 5,
+			mouse: true,
+			method: 'flip',
+			resize: true
+		}
+        },
+        style: {
+                
+		classes: '{{article_preview.colorTheme.bulleTip}} ui-tooltip-shadow',
+		tip: {
+			corner: true,
+			mimic: false,
+			width: 8,
+			height: 8,
+			border: true,
+			offset: 0
+		}
+                
+	}
+	
+	});
+});
+</script>
+{% endblock %}
+
+
+{% block shortDescription %}
+        <div class="shortDescriptionPage">Sur cette page tu peux visualisé ton article</div>
+{% endblock %}  
+
+{% block startButton %}
+        <a id="getActicle" class="{{article_preview.colorTheme.boutonStart}}"  href="{{ path('synry63BlogBundle_acticle') }}">
+{% endblock %}
+        
+
+{% block header %}
+<div style="background-color: {{article_preview.colorTheme.backgroundColor }}" id="header">
+{% endblock %}
+{% block menuGauche %}
+    <div style="background-color: {{article_preview.colorTheme.backgroundColor }}" class="menuGauche">		
+{% endblock %}
+            
+
+{% block contenu %}
+<div id="acticle"> 
+
+ {% if article_preview.colorTheme is defined %}
+        <span id="colorUse"
+               param1="{{article_preview.colorTheme.backgroundColor }}"
+               param2="{{article_preview.colorTheme.bulleTip}}" 
+               param3="{{article_preview.colorTheme.boutonStart}}"> 
+        </span> 
+        
+    {% endif %}    
+    <hgroup class="articleTitleConteneur">
+        <h1 class="acticleTitle">{{ article_preview.titre }}</h1>
+        {% if article_preview.theme is defined %}
+            <h2 class="acticleTitle">{{ article_preview.theme.nom }}</h2>
+        {% endif %}
+            <form style="display: inline;float: right;" action="{{ path('synry63BlogBundle_previewacticle') }}" method="post"> <input  type="submit"/>
+                <input type="hidden" name="id" value="{{article_preview.id}}"/>
+            </form>    
+    </hgroup>
+    {% if article_preview.image.path is defined %}
+    <div style="width: 100%;margin-top: 10px;float: left;">
+        <p class="acticleParagraphe1 elementFloat">
+            <span style="background-color: {{article_preview.colorTheme.backgroundColor }}" >
+                    {{ article_preview.texte }}
+                </span>
+        </p>
+        <img class="articleImage1" src="{{ asset(article_preview.image.path) }}">
+    </div>
+    {%else%}
+    <div style="margin-top: 10px;float: left;">
+        <p style="width: 100%;" class="acticleParagraphe1">
+                <span style="background-color: {{article_preview.colorTheme.backgroundColor }}">
+                    {{ article_preview.texte }}
+                </span>
+        </p>
+    </div>    
+    {% endif %}
+     <p class="acticleParagraphe2">
+         <span style="background-color: {{article_preview.colorTheme.backgroundColor }}"> Lien :  <a onclick="window.open(this.href); return false;" href="{{article_preview.link}}">{{article_preview.link}}</a></span>
+     </p>
+     <p class="byUser">
+      {% if article.user.username is defined %}
+           by {{ article.user.username }}
+       {%else%}
+            by anonymous  
+       {%endif%}
+     </p>
+                 </div>        
+
+
+            </div>    
+        </div> 
+
+{% endblock %}
+                
+                
+                
+                
+
+

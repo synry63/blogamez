@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Articles Games {% endblock %}
+
+{% block body %}
+   
+<div id="global">
+    {% block shortDescription %}
+        {% if app.session.hasFlash('notice') %} 
+            <div id="flashmessage" class="flash-notice shortFlash"> 
+                {{ app.session.flash('notice') }} 
+            </div>     
+        {% else %}
+        <div class="shortDescriptionPage">{{  'DESCRIPTION_BRIEF_PAGE_MAIN'  | trans }} 
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                 {{  'WELCOME_USER'  | trans({"%USER_PSEUDO%":app.user.username}) }} 
+            {%else%}
+                    <a class="inscritToi" href="{{ path('fos_user_registration_register') }}">{{  'INSCRIT_TOI'  | trans }}</a>
+            {% endif %}
+             <strong> {{  'DESCRIPTION_BRIEF_PAGE_MAIN_EXPLICATION_INSCRIPTION'  | trans }}</strong></div>
+               
+    {% endif %}
+    {% endblock %}    
+   
+            
+    {% include "synry63BlogBundle:Default:menu_gauche.html.twig" %}        
+    <div id="contenu">
+        <div id="imageFondConteneur">
+            <img style="position:absolute;height: 350px;width: 740px;" alt="image slide show" id="imageFondLoading" src="{{ asset(imagePath) }}" />
+        </div>
+
+       
+            <a title="{{  "TEXTE_EXPLICATION_FILTRE"  | trans }}" class="recGlobal" id="rec2"  href="javascript:void(0);">
+                Filtre :&nbsp;<span>NA</span>
+        </a>
+        <a title="{{  "TEXTE_EXPLICATION_ARTICLE_THEME"  | trans }}"  class="recGlobal" id="rec3"  href="javascript:void(0);">
+            {{  "TEXTE_NOM_LIEN_ARTICLE_THEME"  | trans }}
+        </a>
+        <!-- <a  href="javascript:void(0);">
+               <div class="recGlobal" id="rec4">
+                             <p onmouseover="showDescriptBrief(3);">Opportunité</p>
+               </div>
+               </a> -->
+        <!--<img src="images/Hexallonge.png"  id="backgroundContentDescImage" /> -->
+
+        <!-- <img src="" style="position: absolute;  z-index: 6; left: 460px; top: 30px;"  /> -->
+
+        <!-- <img src="Logo Images/MorindaCitrifolia3.jpg" style="position: absolute; width: 187px; height: 181px; z-index: 6; left: 420px; top: 31px;"  />  -->
+
+        <!--<a id="getActicle" href="{{ path('synry63BlogBundle_acticle') }}"><img class="recGlobal"  id="recCentral" style="border:0px;" src="http://images.supportduweb.com/bouttons.php?frm=1&amp;btn_type=50&amp;txt=START" onmouseover="this.src='http://images.supportduweb.com/bouttons.php?frm=2&amp;btn_type=50&amp;txt=START'" onmouseout="this.src='http://images.supportduweb.com/bouttons.php?frm=1&amp;btn_type=50&amp;txt=START';" alt="START" /></a>
+        <script type="text/javascript">
+        img=new Image();
+        img.src= "http://images.supportduweb.com/bouttons.php?frm=2&amp;btn_type=50&amp;txt=START";
+        </script>-->
+        {% block startButton %}
+        <a id="getActicle" class="buttonGameDefault"  href="{{ path('synry63BlogBundle_acticle') }}">
+        {% endblock %}
+            <span>START</span>
+            <img style="display: none;" src="{{ asset('images/ajax-loader_2.gif') }}"/>
+        </a>
+
+        </div>
+{% block contenu %}
+{% endblock %}
+    
+{% endblock body %}
+            
+{% block my_javascripts %}
+<script>
+    var PATHIMAGEGENERAL = "{{generalPath}}"
+    var DEBUT_IMAGE_A_CHARGER =parseInt("{{image_debut}}")
+    var NB_IMAGES = parseInt("{{valeur_max_image}}")
+    var MAX_IMAGE_A_CHARGER = parseInt("{{max_image_a_charger}}")
+</script>
+    <script type="text/javascript" src="{{ asset('js/js.js') }}"></script>    
+    
+{% endblock %} 
+            
+
+        

@@ -1,0 +1,32 @@
+ <div id="containerMenuGauche">
+        <div class="menuGauche">		
+               <!-- <span style="display: block;cursor: pointer" id="titleTheme"> -->
+               <div style="height: 29px;border-bottom: 1px solid white;">
+                <h3 id="titleTheme" class="titleListe">{{  'TITRE_THEME'  | trans }}</h3>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <span class="erreur_theme" id="theme_ko" style="display: none;">A débloquer !&nbsp;</span>
+                    <span class="erreur_theme" id="theme_ok" style="display: none;">OK !&nbsp;</span>
+                {%else%}       
+                    
+                {%endif%}
+                </div>    
+                <ul id="ullisteTheme">
+                    {% include "synry63BlogBundle:Default:menu_gauche_theme.html.twig" %}
+                </ul>
+                <div style="height: 29px;border-bottom: 1px solid white;">
+                <h3  id="titleHistorique" class="titleListe">{{  'TITRE_HISTORIQUE'  | trans }}</h3>
+                <a id="updateHistorique" href="{{ path('synry63BlogBundle_rafraichirhistorique') }}"><img style="border:none;" src="{{ asset('images/icon_pack_7000_actualiser.png') }}"></img></a>
+                <img id="imgLoadingHistorique" style="display: none;height: 25px;width: 25px;" src="{{ asset('images/ajax-loader_2.gif') }}"></img>
+                
+                </div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                    <ul id="ullisteHistorique" style="display: none;">
+
+                        {% include "synry63BlogBundle:Default:menu_gauche_historique.html.twig" %}         
+                    </ul>
+                    <p class="historiqueNonCo">{{  'HISTORIQUE_ARTICLE_EXPLICATION'  | trans }}</p>
+                {%else%}
+                    <p class="historiqueNonCo">{{  'HISTORIQUE_ERREUR_CO'  | trans }} <a href="{{ path('fos_user_security_login') }}">{{  'QUICK_CONECTION'  | trans }}</a></p>
+                {%endif%}              
+        </div>
+    </div>

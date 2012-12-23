@@ -1,0 +1,63 @@
+#HEADER
+REGLE_JEU: REGLE DU JEU
+CREE_ARTICLE: CREE UN ARTICLE
+DECONNEXION: Déconexion
+CONNECTION: Connection
+INSCRIPTION: Inscription
+PRESENTATION_TITRE : bienvenue sur Blog-Game
+PRESENTATION_TEXTE: Tu veux decouvrir une actu sympa qui pourai t'interesser ? Ne cherche pas plus loin, sur ce site on te fera decouvrir des articles concis sur un thèmes particulier. Le nombre de thèmes est infini ! humour,science fiction,heroïc fantasie, people, mode, santé, economie, politique... Pour cela rien de plus simple il suffit de cliquer sur START ! tu recupérera un article aléatoire écrit par la communauté. De plus le blog est un mini-jeu, tu débloquera les thèmes au fure et à mesure que tu dévouvrira des nouveaux articles.
+TEXTE_EXPLICATION_ARTICLE_THEME: Impossible à prédire, peux être sur un film, un produit de beauté, une rumeur.
+TEXTE_NOM_LIEN_ARTICLE_THEME: Sur coi je vais Tombé ?
+DESCRIPTION_BRIEF_PAGE_MAIN: C'est la page du jeu.
+INSCRIT_TOI: inscrit toi !
+WELCOME_USER: Bienvenue %USER_PSEUDO%.
+CREATION_ARTICLE_TITRE: Formulaire de création d'article
+HISTORIQUE_ERREUR_CO: Seul les inscrits peuve acceder à l'historique.
+HISTORIQUE_ARTICLE_EXPLICATION: Les articles lus seront concervés dans l'historique.
+DESCRIPTION_BRIEF_PAGE_MAIN_EXPLICATION_INSCRIPTION: Tu poura lire tout les articles du site, les noter, et bénéficier d'un historique. 
+TEXTE_EXPLICATION_REGLE: Les règles sont simple, cliquer sur le bouton START permet de récupérer un article au hazard. Chaques nouvels articles te fait gagner des points dans le thème de l'article associé.
+#tHEME LISTE
+QUICK_CONECTION: Connecte Toi !
+THEME_NOM_FANTASY: Héoric Fantasy
+THEME_NOM_HUMOUR: Humour
+THEME_NOM_DUCUMENTAIRE: Documentaire
+THEME_NOM_FRISSON: Frisson
+THEME_NOM_BIENETRE: Santé
+THEME_NOM_CELEBRITE: Célébrité
+THEME_NOM_AMOUR: Amour
+THEME_NOM_FETE: Fête
+THEME_NOM_SPORT: Sport
+THEME_NOM_SCIENCE_FICTION : Science Fiction
+THEME_NOM_ANIMATION : Animation
+TITRE_THEME: Thème
+THEME_DESC_HUMOUR: Découvrez des articles drôle !
+THEME_DESC_FANTASY: Tout sur l'héroic fantasy !
+THEME_DESC_SCIENCE_FINCTION: Tout sur l'univert de la science-fiction !
+THEME_DESC_DUCUMENTAIRE: Ce thème permet de trouver des articles historiques, scientifiques.
+THEME_DESC_FRISSON: Découvrez des articles qui pourai vous faire peur !
+THEME_DESC_BIENETRE: Ce thème permet de découvrir des produits, services de bien être.
+THEME_DESC_CELEBRITE: Découvrez un article concernant une célébrité. Une Rumeur, un fait marquant ?
+THEME_DESC_AMOUR: Découvrez des articles qui parle d'amour !
+THEME_DESC_FETE: Découvrez des évenments, des lieux festifs.
+THEME_DESC_SPORT: Découvrez un nouveau sport, une actualité sportif.
+THEME_DESC_ANIMATION: Décrouvez des réalisation d'animations (3D, cartoon)
+#HISTORIQUE LISTE
+TITRE_HISTORIQUE: Historique
+ETAT_PROG: Av : 
+#PAGE CREE ARTICLE
+DESCRIPTION_BRIEF_PAGE_CREATION_ARTICLE: Sur cette page tu peux créer un article
+EXPLICATION_FORM_TITRE: Choisi un titre pour ton article. Celui-ci ne peux pas faire moin de 5 caractères
+EXPLICATION_FORM_THEME_CATEGORIE: Choisie un thème pour ton article parmit la liste disponible.
+EXPLICATION_FORM_COULEUR_THEME: Choisie une une couleur qui represente au mieux l'article que tu partages.
+EXPLICATION_FORM_TEXTE: C'est le corp de ton article. Ecrit un texte qui explique ce que tu présentes. 50 caractères minimun.
+EXPLICATION_FORM_IMAGE: C'est toujours plus sympa avec un visuel. Rajoute une image en rapport avec ton article.
+EXPLICATION_FORM_LIEN: Tu peux rajouter un lien web qui concerne l'article
+TEXTE_EXPLICATION_FILTRE: Tu peux filtrer les articles par thème que tu débloque.
+LABEL_TITRE_FORM: Titre Article
+LABEL_THEME_FORM: Theme
+LABEL_CATEGORIE_FORM: Catégorie
+LABEL_TEXTE_FORM: Texte
+LABEL_IMG_FORM: Image
+LABEL_lINK_FORM: Lien
+#FOOTER
+FOOTER_TEXTE: Blog-Jeu. Des articles aléatoires à la demande.

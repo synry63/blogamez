@@ -1,0 +1,21 @@
+{% extends "synry63BlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Welcome {% endblock %}
+
+{% block contenu %}
+
+<div id="acticle">
+        
+        {% if article is defined %}
+            {% include "synry63BlogBundle:Default:article.html.twig" %}
+        {% elseif presentation is defined %}
+            {% include "synry63BlogBundle:Default:defaultPresentation.html.twig" %}
+
+        {% endif %}  
+
+</div>      
+    </div>
+
+
+
+{% endblock %}

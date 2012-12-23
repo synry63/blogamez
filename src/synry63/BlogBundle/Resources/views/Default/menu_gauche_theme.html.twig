@@ -1,0 +1,20 @@
+
+                {% if liste_themes_user is defined %}
+                         {% for tu in liste_themes_user %}
+                         {% set prog = (tu.etatProg*100/tu.theme.maxProg) %}
+                         {% set bx = ((240*prog/100)-240)~'px'%}
+                            {%if prog==100 %}
+                                <li class="liMenuGauche" id="liCorrect" title="{{  tu.theme.description  | trans }}" style="background-position:{{bx}}">
+                            {%else%}
+                                <li class="liMenuGauche" id="liIncorrect" title="{{  tu.theme.description  | trans }}" style="background-position:{{bx}}">
+                                  
+                            {%endif%}
+                                    <img alt="Chargement Etat Thème" id="{{"theme_"~tu.theme.id}}" style="display: none;" src="{{ asset('images/ajax-loader_1.gif') }}"></img>
+                                    <a id="{{"theme_"~tu.theme.id}}" class="defaultLinkListe" href="{{ path('synry63BlogBundle_themechose') }}"><span>{{  tu.theme.nom  | trans }}</span> <span class="etatProgression">{{  'ETAT_PROG'   | trans() }}&nbsp;<span>{{prog}} %</span></span></a></li>
+                         {% endfor %}
+                {% elseif liste_themes is defined %} 
+                          {% for t in liste_themes %}
+                        <li class="liMenuGauche" id="{{t.id}}" title="{{  t.description  | trans }}">{{  t.nom  | trans }}</li>
+                         {% endfor %}
+                                 
+                {% endif %}        

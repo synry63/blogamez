@@ -1,0 +1,80 @@
+{% extends "synry63BlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - New Acticle{% endblock %}
+
+{% block shortDescription %}
+        <p class="shortDescriptionPage">{{  'DESCRIPTION_BRIEF_PAGE_CREATION_ARTICLE'  | trans }}</p>
+{% endblock %}    
+
+{% block contenu %}
+<div id="acticle">
+    <hgroup class="articleTitleConteneur">
+        <h1 class="acticleTitle">{{ "CREATION_ARTICLE_TITRE" | trans }}</h1>         
+    </hgroup>
+        <form class="formCreationArticle" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form._token) }}
+        {{ form_errors(form) }}        
+        <div id="topArticle">
+            <p>{{  'EXPLICATION_FORM_TITRE'  | trans }}</p>   
+        {{ form_errors(form.titre) }}
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre,{ 'attr': { 'placeholder':'default Titre','class':'acticleTitleForm'} }) }}
+        </div>   
+        <div class="articleSelect">
+            <p>{{  'EXPLICATION_FORM_THEME_CATEGORIE'  | trans }}</p>
+        {{ form_label(form.theme)}}    
+        {{ form_widget(form.theme,{ 'attr': { 'class':' acticleThemeForm'}}) }}
+        </div>
+            <div class="conteneurPanelColor">
+            <p>{{  'EXPLICATION_FORM_COULEUR_THEME'  | trans }}</p>    
+                <ul> 
+                {% for t in liste_color_themes %}           
+                    <li id="{{t.id}}"    param1="{{t.backgroundColor }}"
+                            param2="{{t.bulleTip}}" 
+                            param3="{{t.boutonStart}}" style="background-color: {{ t.backgroundColor }}">
+                        <span id="colorBackground" title="{{t.backgroundColor }}"></span>
+                        <span id="colorBulle" title="{{t.bulleTip }}"></span>
+                        <span id="colorBouton" title="{{t.boutonStart }}"></span>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+              
+            <div class="formActicleParagraphe1">
+              <p>{{  'EXPLICATION_FORM_TEXTE'  | trans }}</p>
+                {{ form_errors(form.texte) }}
+                {{ form_label(form.texte)}}
+                {{ form_widget(form.texte,{ 'attr': {'placeholder':"Donec nunc dolor, venenatis rutrum vestibulum porta, imperdiet vel est. Vivamus porttitor lorem sit amet purus commodo adipiscing. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sit amet iaculis orci. Quisque est lectus, malesuada quis molestie a, tincidunt et orci. Quisque volutpat mauris ut felis rhoncus commodo. Nulla vitae urna ac mi tincidunt egestas a vel tellus. Quisque sollicitudin lorem sit amet purus ullamcorper aliquet tincidunt dui tempus. Sed viverra eleifend ultrices. Aenean ac vehicula libero. Aliquam erat volutpat. Maecenas varius turpis vitae eros vulputate elementum laoreet lorem blandit. Vivamus non massa nisl, vitae vehicula ligula. Aenean at libero ut nulla feugiat venenatis.",'class':'acticleContenuForm'}}) }}
+            </div>
+             
+            <div class="formArticleImage1">
+             <p>{{  'EXPLICATION_FORM_IMAGE'  | trans }}</p>
+                {%if erreur!=1%} 
+                <ul>
+                <li>L'Image doit être en format paysage</li>
+                </ul>
+                {%endif%}    
+                {{ form_errors(form.image) }}
+                {{ form_label(form.image)}}
+                {{ form_widget(form.image,{ 'attr': { 'class':'acticleContenuImage'}}) }}
+            </div>
+            <div class="formActicleParagraphe2"> 
+             <p>{{  'EXPLICATION_FORM_LIEN'  | trans }}</p>
+            {{ form_errors(form.link) }} 
+            {{ form_label(form.link)}} 
+            {{ form_widget(form.link) }}
+            </div>
+                <div>
+                <input id="apercu" value="Aperçu de mon article" type="submit" class="btn btn-primary" />
+                </div>
+                <input id="form_color" type="hidden" name="color_chose" value="0">
+                    </form>        
+
+       
+                </div>        
+
+
+            </div>    
+        </div>
+
+{% endblock %}

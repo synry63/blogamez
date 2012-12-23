@@ -1,0 +1,99 @@
+       {% if tu is defined %}     
+        {% set prog = (tu.etatProg*100/tu.theme.maxProg) %}
+        {% set bx = ((240*prog/100)-240)~'px'%}
+            <span id="themeUpdate_texte"
+                title="{{prog}}">
+            </span>
+            <span id="themeUpdate_bg"
+                title="{{bx}}">
+            </span>
+            <span  id="themeUpdate_id"
+                title="{{tu.theme.id}}"> 
+            </span>
+       {% endif %}                       
+       {% if article.colorTheme is defined %}   
+            <span id="colorBackground"
+                title="{{article.colorTheme.backgroundColor }}"> 
+            </span>
+            <span id="colorBulle"
+                title="{{article.colorTheme.bulleTip}}" > 
+            </span>
+            <span id="colorBouton"
+                title="{{article.colorTheme.boutonStart}}"> 
+            </span>
+       {% endif %}
+    {%if moy is defined%}   
+    <div class="rank">
+        <!-- in this exemple, 5 is the average and 1 is the id of the line to update in DB -->
+        <div class="basic" id="{{moy~'_'~article.id}}"></div>
+    </div>
+    {%elseif demo is defined%}
+         <div class="demo">
+             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {%if filtre==0%}
+                        <p>Tu as recupéré tout les articles disponible du moment.</p>
+                    {%else%}
+                        <p>Pas de nouvels articles avec le filtre sélectionné.</p>
+                    {% endif %}    
+             {%else%}    
+                <p><span>DEMO.</span> Conecte toi afin d'avoir un suivi, debloquer plus d'articles</p>
+             {% endif %}   
+             </div>
+    {% endif %}
+    <hgroup class="articleTitleConteneur">
+        <h1 class="acticleTitle">{{ article.titre }}</h1>
+        {% if article.theme is defined %}
+            <h2 class="acticleTitle">{{  article.theme.nom  | trans }}</h2>
+        {% endif %}           
+    </hgroup>
+
+    {% if article.image.path is defined %}
+    <div style="width: 100%;float: left; margin-top: 10px;">
+        <p  class="acticleParagraphe1 elementFloat">
+                <span>
+                    {{ article.texte }}
+                </span>
+        </p>
+        <img class="articleImage1" src="{{ asset(article.image.path) }}">
+    </div>
+    {%else%}
+    <div style="margin-top: 10px;float: left;">
+        <p style="width: 100%;" class="acticleParagraphe1">
+                <span>
+                    {{ article.texte }}
+                </span>
+        </p>
+    </div>    
+    {% endif %}
+     <p class="acticleParagraphe2">
+         <span> Lien :  <a onclick="window.open(this.href); return false;" href="{{ article.link }}">{{ article.link }}</a></span>
+     </p>
+     <p class="byUser">
+      {% if article.user.username is defined %}
+           by {{ article.user.username }}
+       {%else%}
+            by anonymous  
+       {%endif%}
+     </p>
+     <script type="text/javascript">
+      //  jRating call
+      $(".basic").jRating({
+         rateMax : 10,
+         //showRateInfo:false,
+         bigStarsPath:"web/lib/jRanking/icons/stars.png",
+         phpPath:"{{path('synry63BlogBundle_ranking')}}",
+         onSuccess : function(){
+        // alert('Success : your rate has been saved :)');
+            jSuccess('Success : your rate has been saved :)',{
+		  HorizontalPosition:'center',
+		  VerticalPosition:'top',
+                  clickOverlay : true,
+		});
+        }
+   });
+ 
+    </script>
+     
+     
+
+

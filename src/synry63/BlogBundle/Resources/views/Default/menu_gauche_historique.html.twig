@@ -1,0 +1,19 @@
+                           
+                           {% if historique is defined %}
+                               {% for h in historique %}
+                                    {%if h.article.lang==app.session.locale%}  
+                                        <li id="liCorrect" class="liMenuGauche" >
+                                        <img alt="Chargement Article Historique" id="{{"historique_"~h.article.id}}" style="display: none;" src="{{ asset('images/ajax-loader_1.gif') }}"></img>
+                                        <a id="{{"historique_"~h.article.id}}" class="defaultLinkListe" href="{{ path('synry63BlogBundle_historique',{'id': h.article.id}) }}"><span>{{h.article.titre}}</span>&nbsp;<span style="float: right;font-size: 75%">{{h.dateVue | date("d/m/y" )}} </span></a></li>
+                                     {%endif%}   
+                                {% endfor %}
+
+                           {%endif%}             
+                            {% if ajax is defined %}
+                               <script type="text/javascript"> 
+                                   
+                                        $("#ullisteHistorique a").click(traitementHistorique);
+                                   
+                               </script>
+                           {%endif%}   
+                

@@ -1,0 +1,23 @@
+parameters:
+     wmd.article_manager.class: synry63\BlogBundle\Manager\ArticleManager
+     wmd.theme_manager.class: synry63\BlogBundle\Manager\ThemeManager
+     wmd.color_theme_manager.class: synry63\BlogBundle\Manager\ColorThemeManager
+     wmd.theme_utilisateur_manager.class: synry63\BlogBundle\Manager\ThemeUtilisateurManager
+     wmd.article_utilisateur_manager.class: synry63\BlogBundle\Manager\ArticleUtilisateurManager
+services:
+     wmd.article_manager:
+         class: %wmd.article_manager.class%
+         arguments: [@doctrine.orm.entity_manager]
+     wmd.theme_manager:
+         class: %wmd.theme_manager.class%
+         arguments: [@doctrine.orm.entity_manager]
+     wmd.color_theme_manager:
+         class: %wmd.color_theme_manager.class%
+         arguments: [@doctrine.orm.entity_manager]
+     wmd.theme_utilisateur_manager:
+         class: %wmd.theme_utilisateur_manager.class%
+         arguments: [@doctrine.orm.entity_manager]
+     wmd.article_utilisateur_manager:
+         class: %wmd.article_utilisateur_manager.class%
+         arguments: [@doctrine.orm.entity_manager]
+         

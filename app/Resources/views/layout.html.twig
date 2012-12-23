@@ -1,0 +1,72 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}blogamez  {% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block stylesheets %}
+ <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+ <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery.qtip.css') }}" />
+ <link type="text/css" rel="stylesheet" href="{{ asset('lib/jRanking/jRating.jquery.css') }}" />
+ <link type="text/css" rel="stylesheet" href="{{ asset('lib/jNotify/src/jNotify.jquery.css') }}" />
+     
+{% endblock %}
+
+</head>
+<body>
+{% block header %}
+<div id="header">
+{% endblock %}
+    <div id="topMenu">
+        <div style="float: left;" class="langueChoose">
+            <a href="{{ path('synry63BlogBundle_choisir_langue',{'langue' : 'en'}) }}">EN</a> &nbsp;
+            <a href="{{ path('synry63BlogBundle_choisir_langue',{'langue' : 'fr'}) }}">FR</a> &nbsp;
+            <a href="{{ path('synry63BlogBundle_choisir_langue',{'langue' : 'es'}) }}">ES</a> &nbsp;
+        
+        </div>
+        <a href="{{ path('synry63BlogBundle_homepage') }}">{{  'ACCEUIL'  | trans }}</a> &nbsp;
+        <a href="{{ path('synry63BlogBundle_news') }}">{{  'NEWS'  | trans }}</a> &nbsp;
+        <a style="cursor: default;" title="{{  'TEXTE_EXPLICATION_REGLE'  | trans }}" class="selector" href="#">{{  'REGLE_JEU'  | trans }}</a> &nbsp;
+        <a href="{{ path('synry63BlogBundle_community') }}">{{  'COMMUNAUTE'  | trans }}</a> &nbsp;	
+        <a id="creeArticle" href="{{ path('synry63BlogBundle_creeacticle') }}">{{  'CREE_ARTICLE'  | trans }}</a> &nbsp;	
+    </div>
+     <div id="topMenuGauche">
+         {% block conection %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a href="#">{{ app.user.username }} </a> - <a href="{{ path('fos_user_security_logout') }}">{{  'DECONNEXION'  | trans }}</a>
+            {% else %}
+                <a href="{{ path('fos_user_registration_register') }}">{{  'INSCRIPTION'  | trans }}</a> &nbsp;
+                <a href="{{ path('fos_user_security_login') }}">{{  'CONNECTION'  | trans }}</a>
+            {% endif %}
+        {% endblock conection %}    
+        
+    </div>
+        
+</div>
+{% block body %}
+    
+{% endblock %}
+     
+            <hr>
+            
+            <footer>
+                <p>{{  'FOOTER_TEXTE'  | trans }}</p>    
+            </footer>
+        </div>
+ {% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <!--<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.24.custom.min.js') }}"></script>-->
+    <script type="text/javascript" src="{{ asset('js/jquery.qtip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/jRanking/jRating.jquery.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('lib/jNotify/src/jNotify.jquery.min.js') }}"></script>
+{% endblock %}
+ {%block my_javascripts %}
+    {% endblock %}
+
+</body>
+
+</html>

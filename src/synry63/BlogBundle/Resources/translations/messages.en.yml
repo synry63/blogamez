@@ -1,0 +1,25 @@
+PRESENTATION_TITRE : welcome
+PRESENTATION_TEXTE: welcome
+THEME_NOM_FANTASY: Héoric Fantasy
+THEME_NOM_HUMOUR: Humour
+THEME_NOM_DUCUMENTAIRE: Documentaire
+THEME_NOM_FRISSON: Frisson
+THEME_NOM_BIENETRE: Santé
+THEME_NOM_CELEBRITE: Célébrité
+THEME_NOM_AMOUR: Amour
+THEME_NOM_FETE: Fête
+THEME_NOM_SPORT: Sport
+THEME_NOM_SCIENCE_FICTION : Science Fiction
+TITRE_THEME: Theme
+THEME_DESC_FANTASY: C'est le Thème qui concerne tout se qui est lié à l'univert fictif de l'héroic fantesie
+ETAT_PROG: Prog : 
+DESCRIPTION_BRIEF_PAGE_MAIN: page principal du jeu description/news
+TEXTE_EXPLICATION_REGLE: explication des regles necessaire a plein de truc
+DESCRIPTION_BRIEF_PAGE_CREATION_ARTICLE: Sur cette page tu peux créer un article
+#PAGE CREE ARTICLE
+LABEL_TITRE_FORM: Title Article
+LABEL_THEME_FORM: Theme
+LABEL_CATEGORIE_FORM: Categorie
+LABEL_TEXTE_FORM: Texte
+LABEL_IMG_FORM: Image
+LABEL_lINK_FORM: Lien
