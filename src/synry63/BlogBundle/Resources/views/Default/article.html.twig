@@ -80,8 +80,11 @@
       $(".basic").jRating({
          rateMax : 10,
          //showRateInfo:false,
-         bigStarsPath:"web/lib/jRanking/icons/stars.png",
+         bigStarsPath:"/web/lib/jRanking/icons/stars.png",
          phpPath:"{{path('synry63BlogBundle_ranking')}}",
+         {% if rank is defined %}
+         isDisabled:"{{rank}}",
+         {%endif%}
          onSuccess : function(){
         // alert('Success : your rate has been saved :)');
             jSuccess('Success : your rate has been saved :)',{

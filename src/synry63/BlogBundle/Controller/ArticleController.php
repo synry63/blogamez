@@ -18,9 +18,22 @@ class ArticleController extends Controller implements PHPInterface {
     //get an article vue
     public function historiqueArticleAction(Article $article) {
         $request = $this->get('request');
+            
         // ajax requete
         if ($request->isXmlHttpRequest()) {
-            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article));
+            $rank = true;
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $moy = $this->get('wmd.article_utilisateur_manager')->getRepository()->getAverage($article->getId());
+            //$aus = $article->getUsers();
+            //$au = $aus->setUser();
+             //$au = $aus[0]; recupere un articleUtilisateur
+            if ($moy == null)
+                   $moy = 5;
+            $au = $this->get('wmd.article_utilisateur_manager')->getRepository()->findOneBy(array('article'=>$article->getId(),'user'=>$user->getId()));
+            if(is_object($au)){
+                if( $au->getRank()==null) $rank = false;
+            }
+            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'ico'=>$this->getGeneralPathIco(),'moy'=>$moy,'rank'=>$rank));
         }
     }
 
@@ -50,7 +63,7 @@ class ArticleController extends Controller implements PHPInterface {
                         $moy = 5;
                     $this->ajouterArticleUtilisateur($article);
                     $tu = $this->updateProgThemeUser($article);
-                    return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article, 'tu' => $tu, 'moy' => $moy));
+                    return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'ico'=>$this->getGeneralPathIco(),'tu' => $tu, 'moy' => $moy));
                 }
                
             }
@@ -67,7 +80,7 @@ class ArticleController extends Controller implements PHPInterface {
             //if ($nb <= 0)
             //    return new Response("pas d'article disponible");
             
-            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $articles[$i],'demo'=>1,'filtre'=>$filtreId));
+            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $articles[$i],'ico'=>$this->getGeneralPathIco(),'demo'=>1,'filtre'=>$filtreId));
         }
     }
 
@@ -221,6 +234,10 @@ class ArticleController extends Controller implements PHPInterface {
 
     public function getRandImageName() {
         return rand(1, $this->container->getParameter('valeur_max_image'));
+    }
+
+    public function getGeneralPathIco() {
+        return $this->get('request')->getBasePath() . '/lib/jRanking/icons/stars.png';
     }
 
 }

@@ -268,4 +268,8 @@ class DefaultController extends Controller implements PHPInterface {
         return rand(1, $this->container->getParameter('valeur_max_image'));
     }
 
+    public function getGeneralPathIco() {
+        
+    }
+
 }
