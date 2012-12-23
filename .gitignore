@@ -1,5 +1,6 @@
+nbproject/private/private.properties
 app/cache/*
-app/log/*
+app/logs/*
 config/*
 config/databases.yml
 config/propel.ini
