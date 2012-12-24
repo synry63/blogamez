@@ -33,7 +33,7 @@ class ArticleController extends Controller implements PHPInterface {
             if(is_object($au)){
                 if( $au->getRank()==null) $rank = false;
             }
-            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'ico'=>$this->getGeneralPathIco(),'moy'=>$moy,'rank'=>$rank));
+            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'moy'=>$moy,'rank'=>$rank));
         }
     }
 
@@ -63,7 +63,7 @@ class ArticleController extends Controller implements PHPInterface {
                         $moy = 5;
                     $this->ajouterArticleUtilisateur($article);
                     $tu = $this->updateProgThemeUser($article);
-                    return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'ico'=>$this->getGeneralPathIco(),'tu' => $tu, 'moy' => $moy));
+                    return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $article,'tu' => $tu, 'moy' => $moy));
                 }
                
             }
@@ -80,7 +80,7 @@ class ArticleController extends Controller implements PHPInterface {
             //if ($nb <= 0)
             //    return new Response("pas d'article disponible");
             
-            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $articles[$i],'ico'=>$this->getGeneralPathIco(),'demo'=>1,'filtre'=>$filtreId));
+            return $this->render('synry63BlogBundle:Default:article.html.twig', array('article' => $articles[$i],'demo'=>1,'filtre'=>$filtreId));
         }
     }
 
@@ -142,7 +142,7 @@ class ArticleController extends Controller implements PHPInterface {
                         'liste_themes' => $liste_themes,
                         'liste_color_themes' => $liste_color_themes,
                         'image_debut'=>$this->getRandImageName(),
-                        'generalPath' => $this->getGeneralPath(),
+                        'generalPath' => $this->getGeneralPathImage(),
                         'imagePath' => $this->getImageRandPath($this->container->getParameter('valeur_max_image'))));
         }
     }
@@ -218,17 +218,17 @@ class ArticleController extends Controller implements PHPInterface {
                     'liste_themes' => $liste_themes,
                     'liste_color_themes' => $liste_color_themes,
                     'image_debut' => $nameImageRand,
-                    'generalPath' => $this->getGeneralPath(),
+                    'generalPath' => $this->getGeneralPathImage(),
                     'imagePath' => $this->getImageRandPath($this->container->getParameter('valeur_max_image'))));
 
         //}
     }
 
     public function getImageRandPath($name) {
-        return $this->getGeneralPath() . $name . '.jpg';
+        return $this->getGeneralPathImage() . $name . '.jpg';
     }
 
-    public function getGeneralPath() {
+    public function getGeneralPathImage() {
         return $this->get('request')->getBasePath() . '/images/images_fond_general/';
     }
 
@@ -236,9 +236,7 @@ class ArticleController extends Controller implements PHPInterface {
         return rand(1, $this->container->getParameter('valeur_max_image'));
     }
 
-    public function getGeneralPathIco() {
-        return $this->get('request')->getBasePath() . '/lib/jRanking/icons/stars.png';
-    }
+
 
 }
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace synry63\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 class DefaultController extends Controller implements PHPInterface {
-
+   
 // recupere un mot aleatoire
     private function mot_aleatoire() {
 // definition de la taille de la chaine
@@ -211,11 +210,11 @@ class DefaultController extends Controller implements PHPInterface {
               $em->flush();
          }
     }
+    // recupere la lang du navigateur
     public function getLangueNavigateur(){
        $language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
        $lang = $language{0}.$language{1};
        return $lang;
-       //return "en"; 
     }
     public function langAction(){
     $this->get('session')->setLocale($this->getLangueNavigateur());
@@ -224,7 +223,6 @@ class DefaultController extends Controller implements PHPInterface {
     }
     //recupere default presentation du site
     public function indexAction() {
-        $lang = $this->get('session')->getLocale();
         $presentation = new \stdClass();
         $presentation->titre = "PRESENTATION_TITRE";
         $presentation->texte = "PRESENTATION_TEXTE";
@@ -242,7 +240,7 @@ class DefaultController extends Controller implements PHPInterface {
                         'liste_themes_user' => $liste_themes_user,
                         'historique' => $historique,
                         'image_debut'=>$nameImageRand,
-                        'generalPath' => $this->getGeneralPath(),
+                        'generalPath' => $this->getGeneralPathImage(),
                         'imagePath' => $this->getImageRandPath($nameImageRand)));
         } else {
             // get themes
@@ -251,16 +249,16 @@ class DefaultController extends Controller implements PHPInterface {
             return $this->render('synry63BlogBundle:Default:index.html.twig', array('presentation' => $presentation,
                         'liste_themes' => $liste_themes,
                         'image_debut'=>$nameImageRand,
-                        'generalPath' => $this->getGeneralPath(),
+                        'generalPath' => $this->getGeneralPathImage(),
                         'imagePath' => $this->getImageRandPath($nameImageRand)));
         }
     }
    
     public function getImageRandPath($name) {
-        return $this->getGeneralPath() .$name. '.jpg';
+        return $this->getGeneralPathImage() .$name. '.jpg';
     }
     
-    public function getGeneralPath() {
+    public function getGeneralPathImage() {
         return $this->get('request')->getBasePath() . '/images/images_fond_general/';
     }
  
@@ -268,8 +266,5 @@ class DefaultController extends Controller implements PHPInterface {
         return rand(1, $this->container->getParameter('valeur_max_image'));
     }
 
-    public function getGeneralPathIco() {
-        
-    }
 
 }
