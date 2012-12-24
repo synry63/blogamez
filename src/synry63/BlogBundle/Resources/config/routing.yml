@@ -1,4 +1,3 @@
-
 synry63BlogBundle_homepage:
     pattern:  /{_locale}/acceuil
     defaults: { _controller: synry63BlogBundle:Default:index,_locale: en}

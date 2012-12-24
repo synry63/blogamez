@@ -1,15 +1,12 @@
 // JavaScript Document
 //global var
-var CONSTDEFAULTDESC = "1";
-var INTERVAL_IMAGE_FAST = 20;
-var INTERVAL_IMAGE_SLOW = 5000;
 var TAB_IMAGE_PATH = Array();
 var TAB_IMAGE_VUE_PATH = new Object();
-var IMAGE_PATH_CURRENT ="";
 var idInterval;
 var i_image = 0;
 var i_image_2em_solution = 1;
 var FILTREID = null;
+var TAB_IMAGE_A_CHARGER = Array();
 //var DEBUT_IMAGE_A_CHARGER = 1;
 //var NB_IMAGES = 320;
 
@@ -23,6 +20,17 @@ function initializeConstante(){
     }
     i_image_2em_solution = DEBUT_IMAGE_A_CHARGER;
     
+}
+function initImageCharger(){
+    var tab_cle_valeur_verif = {};
+    while(TAB_IMAGE_A_CHARGER.length<MAX_IMAGE_A_CHARGER){
+        var rand = Math.floor((Math.random()*NB_IMAGES)+1);
+        if(rand!=DEBUT_IMAGE_A_CHARGER && tab_cle_valeur_verif[""+rand+""]==undefined){
+            tab_cle_valeur_verif[""+rand+""] = true;
+            TAB_IMAGE_A_CHARGER.push(rand);
+        }
+        
+    }
 }
 
 //function swith effet on text rec
@@ -101,7 +109,7 @@ function updateProgTheme(){
     var id =  $('#themeUpdate_id').attr("title");
     $("a#theme_"+id).parent().css("background-position-x",bx);
     $("a#theme_"+id+" span span").text(prog+" %");
-    $("a#theme_"+id).parent().effect('pulsate',{times:2},500);
+    $("a#theme_"+id).parent().effect('pulsate',{times:2},2000);
     
 }
 //modifie le theme
@@ -198,7 +206,6 @@ function traitementImage(){
         if(imageVue==undefined){            
             imageChanger=true;
             TAB_IMAGE_VUE_PATH[""+i+""] = TAB_IMAGE_PATH[i];
-            //chargerImage(i,TAB_IMAGE_PATH[i]);
             afficherImage(i);
         }
         else i++;
@@ -282,15 +289,22 @@ function annuleFiltre(){
     $("#rec2 span").text("NA");
 }
 
-function test(){
+/*function test(){
     for(var i=0;i<MAX_IMAGE_A_CHARGER;i++){
     chargerImages(i,DEBUT_IMAGE_A_CHARGER);
     DEBUT_IMAGE_A_CHARGER++;
     }
+}*/
+function test(){
+    for(var i=0;i<MAX_IMAGE_A_CHARGER;i++){
+    chargerImages(i,TAB_IMAGE_A_CHARGER[i]);
+    }
 }
 // js utilsié when doc ready 
 jQuery(document).ready(function(){
-initializeConstante();
+
+initImageCharger();
+//initializeConstante();
 setTimeout("test()",1);
 //setInterval('chargeImage()',5000);
 

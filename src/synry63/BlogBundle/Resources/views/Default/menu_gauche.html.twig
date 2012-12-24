@@ -26,6 +26,8 @@
                     </ul>
                     <p class="historiqueNonCo">{{  'HISTORIQUE_ARTICLE_EXPLICATION'  | trans }}</p>
                 {%else%}
+                    <ul id="ullisteHistorique" style="display: none;">
+                    </ul>    
                     <p class="historiqueNonCo">{{  'HISTORIQUE_ERREUR_CO'  | trans }} <a href="{{ path('fos_user_security_login') }}">{{  'QUICK_CONECTION'  | trans }}</a></p>
                 {%endif%}              
         </div>
